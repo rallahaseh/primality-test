@@ -1,21 +1,32 @@
-# Compiler Construction Course
+# Ausgewählte Themen der Embedded Software Entwicklung II - Selected Topics of Embedded Software Development II
 
-**Semester:** SS-2021
+**Semester:** WS-2021/22
 
-**Instructor:** Prof. Dr. Peter Faber
+**Instructor:** Prof. Dr. Martin Schramm
 
-**Project:** Introduce a different type (suggested: void type) that can be used at least for function declarations and definitions
-<img width="600" alt="c++" src="https://github.com/rallahaseh/primality-test/assets/10099935/82a759c5-3828-495c-acf3-6598eb0653c6">
+**Project:** Testing and generating Prime Numbers and Safe Primes using CryptoCore
 
-# Student
+[![Foo](https://images2.alphacoders.com/304/thumbbig-3042.webp)]
+ 
+# Group 2 – Team 4
 
 - Rashed Al-Lahaseh – 00821573
+- Vikas Gunti - 12100861
+- Supriya Kajla – 12100592
+- Srijith Krishnan – 22107597
+- Wannakuwa Nadeesh – 22109097
 
-# Conclusion
-This project consists of different tasks, where each task is a stepping stone for the next task. In the first task, we will start with the Lex (lexical analysis), where we have to split our input data into a set of tokens such as identifiers, keywords, brackets, etc. This helped us understand how Flex works.
-In the second task, we deal with the semantic parsing, where we use Bison to generate an AST while parsing the tokens, and what’s nice here is that Bison is going to do most of the legwork here, as we will notice we are only going to define our needed AST.
+# Running the application
+### \driver
+- `make clean && make`
+- `insmod cryptocore_driver.ko`
+- `lsmod` to make sure the driver has been loaded
 
-In the third task, we further interact with our assembly using LLVM. This part is responsible for generating the machine code for each node where it walks over our AST.
-In general, this workshop (project) is a good experience for learning new things, solving problems, and understanding how programming languages work, as long as you get deeper into them and start realizing that not all the parts are hard to understand.
-
-So, in the end, I would like to thank you Prof. Dr. Ing. Peter Faber for the material was provided through the course and for your help during our classes. Because we believe that this course gave us the good knowledge to dig in more on this field because as I believe this field is very important and still actively in the market with the new languages being provided in our days such as (Kotlin, Dark, Elm, etc.).
+### \application
+- `gcc -c main.c`
+- `gcc -c prime_Generator.c`
+- `gcc -c prime_Tester.c`
+- `gcc -c safeprime_Generator.c`
+- `gcc -c safeprime_Tester.c`
+- `gcc -o combined main.o prime_Generator.o prime_Tester.o safeprime_Generator.o safeprime_Tester.o -lrt`
+- `./combined`
